@@ -1,31 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        div.out{
-            width: 200px;
-            height: 60px;
-            background-color: yellow;
-        }
-    </style>
-    <script src="/js/jquery-3.6.0.min.js"></script>
-
-    <script>
-        var i=0;
-        $("div.out").mouseover(function(){
-            $("p:first" , this).text("mouse over");
-            $("p:last",this).text(++i);
-        });
-    </script>
+  <meta charset="utf-8">
+  <title>mouseleave demo</title>
+  <style>
+  div.out {
+    width: 40%;
+    height: 120px;
+    margin: 0 15px;
+    background-color: #d6edfc;
+    float: left;
+  }
+  div.in {
+    width: 60%;
+    height: 60%;
+    background-color: #fc0;
+    margin: 10px auto;
+  }
+  p {
+    line-height: 1em;
+    margin: 0;
+    padding: 0;
+  }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 </head>
 <body>
-    <div class="out">
-        <p>마우스를 여기로 움직이세요.</p>
-        <p>0</p>
-    </div>
+ 
+<div class="out overout">
+  <p>move your mouse</p>
+  <div class="in overout"><p>move your mouse</p><p>0</p></div>
+  <p>0</p>
+</div>
+<div class="out enterleave">
+  <p>move your mouse</p>
+  <div class="in enterleave"><p>move your mouse</p><p>0</p></div>
+  <p>0</p>
+</div>
+ 
+<script>
+var i = 0;
+$( "div.overout" )
+  .mouseover(function() {
+    $( "p", this ).first().text( "mouse over" );
+  })
+  .mouseout(function() {
+    $( "p", this ).first().text( "mouse out" );
+    $( "p", this ).last().text( ++i );
+  });
+ 
+var n = 0;
+$( "div.enterleave" )
+  .mouseenter(function() {
+    $( "p", this ).first().text( "mouse enter" );
+  })
+  .mouseleave(function() {
+    $( "p", this ).first().text( "mouse leave" );
+    $( "p", this ).last().text( ++n );
+  });
+</script>
+ 
 </body>
 </html>
