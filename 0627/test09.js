@@ -2,11 +2,13 @@
 let user = {};
 Object.defineProperty(user, "age",{
     get: function(){
-     return this.age;
+     return this._age;
     },
     set: function(age){
-        if(age<0){
-            this.age = age;
+        if(age < 0){
+            console.error('0보다 작은값을 올 수 없습니다.')
+        } else{
+            this._age = age;
         }
     },
     enumerable : true
